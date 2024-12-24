@@ -8,6 +8,17 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "@rushstack/eslint-config": "^4.1.0",
     "@tanstack/eslint-plugin-query": "^5.62.1",
@@ -15,6 +26,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-no-relative-import-paths": "^1.5.5",
     "eslint-plugin-prettier": "^5.2.1",
+    "lint-staged": "^15.2.11",
     "next": "15.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
