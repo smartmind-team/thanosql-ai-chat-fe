@@ -8,6 +8,17 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.4",
     "@radix-ui/react-slot": "^1.1.1",
@@ -22,7 +33,14 @@
     "react-resizable-panels": "^2.1.7",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "zustand": "^5.0.2"
+    "zustand": "^5.0.2",
+    "@rushstack/eslint-config": "^4.1.0",
+    "@tanstack/eslint-plugin-query": "^5.62.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-no-relative-import-paths": "^1.5.5",
+    "eslint-plugin-prettier": "^5.2.1",
+    "lint-staged": "^15.2.11"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
