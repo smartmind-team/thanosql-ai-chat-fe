@@ -5,12 +5,12 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { useState } from "react";
-import SideNav from "@/features/side-nav";
-import { Button } from "@/components/ui/button";
+import SideNav from "@/components/side-nav";
+import ChatInterface from "@/components/chat-interface";
+import { useOverlayStore } from "@/store/overlay";
 
 export default function Home() {
-  const [isItem, setIsItem] = useState<boolean>(false);
+  const isOpenItemPanel = useOverlayStore((state) => state.isOpenItemPanel);
 
   return (
     <div className="flex-1 flex bg-sideBackground relative top-0 left-0">
@@ -23,23 +23,23 @@ export default function Home() {
           <ResizablePanel
             id="chat-panel"
             order={0}
-            minSize={25}
-            defaultSize={isItem ? 50 : 100}
+            minSize={35}
+            defaultSize={isOpenItemPanel ? 50 : 100}
           >
-            <Button variant="ghost" onClick={() => setIsItem((prev) => !prev)}>
-              One
-            </Button>
+            <ChatInterface />
           </ResizablePanel>
-          {isItem && (
+          {isOpenItemPanel && (
             <>
               <ResizableHandle id="resizable-handler" />
               <ResizablePanel
                 id="item-panel"
                 order={1}
-                minSize={25}
+                minSize={35}
                 defaultSize={50}
               >
-                <Button variant="ghost">Two</Button>
+                <div className="w-full h-full flex justify-center items-center">
+                  Item Panel
+                </div>
               </ResizablePanel>
             </>
           )}

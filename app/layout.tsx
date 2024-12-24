@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/lib/theme-provider";
+import { cn } from "@/lib/utils";
 
 const spoqaHanSansNeo = localFont({
   src: [
@@ -47,7 +48,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body
-        className={`${spoqaHanSansNeo.variable} antialiased w-screen h-screen flex overflow-hidden`}
+        className={cn(
+          spoqaHanSansNeo.variable,
+          "antialiased w-screen h-screen flex overflow-hidden"
+        )}
       >
         <ThemeProvider
           attribute="class"
