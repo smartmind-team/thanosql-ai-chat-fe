@@ -2,16 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+body {
+  font-family: var(--font-spoqa-han-sans), sans-serif;
   font-size: 14px;
 }
 
-body {
-  font-family: var(--font-spoqa-han-sans), sans-serif;
+body #custom-gradient {
+  background: linear-gradient(to top, var(--gradient-bg-from) 78%, var(--gradient-bg-to));
 }
 
 @layer base {
   :root {
+    --gradient-bg-from: #ffffff;
+    --gradient-bg-to: #ffffff22;
     --background: 0 0% 100% / 1;
     --side-background: 0 0% 98% / 1;
     --opacity-background: 0 0% 100% / 1;
@@ -47,6 +50,8 @@ body {
     --brands-thin: 268 57% 95% / 1;
   }
   .dark {
+    --gradient-bg-from: #262627;
+    --gradient-bg-to: #26262720;
     --background: 240 1% 15% / 1;
     --side-background: 240 5% 7% / 1;
     --opacity-background: 0 0% 0% / 1;
