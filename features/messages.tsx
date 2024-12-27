@@ -9,12 +9,10 @@ interface MessagesProps {
   message: Message;
   isLoading: boolean;
   isLastIndex?: boolean;
-  reload: (chatRequestOptions?: ChatRequestOptions) => Promise<string | null | undefined>;
 }
 
-export default function Messages({ id, message, isLoading, isLastIndex, reload }: MessagesProps) {
+export default function Messages({ id, message, isLoading, isLastIndex }: MessagesProps) {
   const isAssistant = message.role === 'assistant';
-  const mode = 'view';
 
   return (
     <AnimatePresence>
@@ -23,7 +21,7 @@ export default function Messages({ id, message, isLoading, isLastIndex, reload }
         initial={{ y: 5, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         data-role={message.role}>
-        <div className='flex gap-4 w-full group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl group-data-[role=user]/message:w-fit'>
+        <div className='flex gap-4 w-full group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-lg group-data-[role=user]/message:w-fit'>
           {isAssistant && (
             <div className='size-8 flex items-center rounded-full justify-center ring-1 shrink-0 ring-border bg-background'>
               <div className='translate-y-px z-0'>
@@ -32,7 +30,7 @@ export default function Messages({ id, message, isLoading, isLastIndex, reload }
             </div>
           )}
           <div
-            className={cn('flex flex-col gap-4', {
+            className={cn('flex flex-col gap-4 pt-[0.4rem]', {
               'bg-primary text-primary-foreground px-3 py-2 rounded-xl': message.role === 'user',
             })}>
             <Markdown>{message.content as string}</Markdown>

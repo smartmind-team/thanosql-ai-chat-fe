@@ -8,13 +8,20 @@ body {
 }
 
 body #custom-gradient {
-  background: linear-gradient(to top, var(--gradient-bg-from) 78%, var(--gradient-bg-to));
+  background: linear-gradient(to top, var(--gradient-bg-from) 80%, var(--gradient-bg-to));
+}
+
+body #custom-inner-gradient {
+  background: linear-gradient(180deg, var(--inner-gradient-bg-from) 0%, var(--inner-gradient-bg-center) 70%, var(--inner-gradient-bg-to) 100%);
 }
 
 @layer base {
   :root {
     --gradient-bg-from: #ffffff;
-    --gradient-bg-to: #ffffff22;
+    --gradient-bg-to: #ffffff01;
+    --inner-gradient-bg-from: #ffffff;
+    --inner-gradient-bg-center: #ffffffb2;
+    --inner-gradient-bg-to: #ffffff00;
     --background: 0 0% 100% / 1;
     --side-background: 0 0% 98% / 1;
     --opacity-background: 0 0% 100% / 1;
@@ -51,7 +58,10 @@ body #custom-gradient {
   }
   .dark {
     --gradient-bg-from: #262627;
-    --gradient-bg-to: #26262720;
+    --gradient-bg-to: #26262700;
+    --inner-gradient-bg-from: #262627;
+    --inner-gradient-bg-center: #262627b2;
+    --inner-gradient-bg-to: #26262700;
     --background: 240 1% 15% / 1;
     --side-background: 240 5% 7% / 1;
     --opacity-background: 0 0% 0% / 1;
