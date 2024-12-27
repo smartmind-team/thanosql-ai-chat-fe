@@ -31,7 +31,7 @@ export default function Messages({ id, message, isLoading, isLastIndex }: Messag
           )}
           <div
             className={cn('flex flex-col gap-4 pt-[0.4rem]', {
-              'bg-primary text-primary-foreground px-3 py-2 rounded-xl': message.role === 'user',
+              'bg-grays-gray05 text-texts-primary-foreground px-3 py-2 rounded-xl': message.role === 'user',
             })}>
             <Markdown>{message.content as string}</Markdown>
           </div>

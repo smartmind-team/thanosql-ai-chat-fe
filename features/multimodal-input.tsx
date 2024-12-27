@@ -25,7 +25,7 @@ export default function MultimodalInput({
 
   const adjustHeight = () => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = '20px';
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight + 2}px`;
     }
   };
@@ -36,7 +36,7 @@ export default function MultimodalInput({
 
   return (
     <StickyCard className='w-full h-auto bottom-9 flex flex-col pt-10' id='custom-gradient'>
-      <div className='bg-sideBackground w-full h-full rounded-lg p-[1.143rem] pb-[0.857rem]'>
+      <div className='bg-grays-gray05 w-full h-full rounded-lg p-[1.143rem] pb-[0.857rem]'>
         <Textarea
           disabled={isLoading}
           ref={textareaRef}

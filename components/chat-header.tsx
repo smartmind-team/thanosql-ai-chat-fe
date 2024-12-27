@@ -12,7 +12,7 @@ export default function ChatHeader() {
         <Button variant='ghost' className='w-9 h-9 bg-background' onClick={handleFixedSideNav}>
           <AlignLeft size={16} />
         </Button>
-        <div className='flex items-center bg-background'>
+        <div className='flex items-center bg-background px-4 rounded-md'>
           <div className='flex items-center justify-center w-9 h-9'>
             <MessagesSquare size={16} />
           </div>
