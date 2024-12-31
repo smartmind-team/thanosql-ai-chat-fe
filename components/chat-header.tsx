@@ -11,15 +11,12 @@ interface ChatHeaderProps {
 }
 
 function ChatHeader({ isMessageEmpty, isLoading }: ChatHeaderProps) {
-  const {
-    // isOpenItemPanel,
-    handleFixedSideNav,
-  } = useOverlayStore();
+  const { toggleFixedSideNav } = useOverlayStore();
 
   return (
     <StickyCard className='absolute top-0' id='custom-inner-gradient'>
       <div className='flex gap-[0.286rem] items-center'>
-        <Button variant='ghost' className='w-9 h-9 bg-background' onClick={handleFixedSideNav}>
+        <Button variant='ghost' className='w-9 h-9 bg-background' onClick={toggleFixedSideNav}>
           <AlignLeft size={16} />
         </Button>
         {!isMessageEmpty && (
@@ -31,19 +28,11 @@ function ChatHeader({ isMessageEmpty, isLoading }: ChatHeaderProps) {
           </motion.div>
         )}
       </div>
-      <div className='flex gap-[0.571rem]'>
-        {/* {!isOpenItemPanel && (
-          <Button
-            variant='ghost'
-            className='w-9 h-9 bg-background'
-            onClick={() =>
-              useOverlayStore.setState(state => ({
-                isOpenItemPanel: !state.isOpenItemPanel,
-              }))
-            }>
-          </Button>
-        )} */}
-      </div>
+      {/* 
+      TODO chat-control btn 
+        <div className='flex gap-[0.571rem]'>
+        </div> 
+      */}
     </StickyCard>
   );
 }

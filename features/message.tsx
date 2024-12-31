@@ -1,20 +1,20 @@
 import { memo, useMemo } from 'react';
 import { cn } from '@/lib/utils';
-import type { Message as TypeMessage } from 'ai';
+import type { Message as IMessage } from 'ai';
 import { Markdown } from '@/components/markdown';
 import { SparklesIcon } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import MessageActions from '@/features/message-actions';
 
 interface MessagesProps {
-  message: TypeMessage;
+  message: IMessage;
   isLoading: boolean;
   isLastIndex: boolean;
 }
 
 function Message({ message, isLoading, isLastIndex }: MessagesProps) {
   const isAssistant = message.role === 'assistant';
-  const isActions = isAssistant && !isLoading;
+  const isShowActions = isAssistant && !isLoading;
 
   const content = useMemo(() => {
     return (
@@ -44,7 +44,7 @@ function Message({ message, isLoading, isLastIndex }: MessagesProps) {
           )}
           <div className='w-full max-w-[calc(100%-3rem)] group-data-[role=user]/message:max-w-full flex flex-col gap-[0.857rem]'>
             {content}
-            {isActions && <MessageActions isLastIndex={isLastIndex} message={message} />}
+            {isShowActions && <MessageActions isLastIndex={isLastIndex} message={message} />}
           </div>
         </div>
       </motion.div>

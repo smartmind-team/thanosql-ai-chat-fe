@@ -1,18 +1,18 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, ReactNode } from 'react';
 import { useTheme } from 'next-themes';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { cn } from '@/lib/utils';
 
 interface CodeBlockProps {
-  node?: any;
   inline: boolean;
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-export function CodeBlock({ node, inline, className, children, ...props }: CodeBlockProps) {
+export function CodeBlock({ inline, className, children, ...props }: CodeBlockProps) {
   const { resolvedTheme } = useTheme();
 
   const syntaxStyle = useMemo(() => (resolvedTheme === 'dark' ? oneDark : oneLight), [resolvedTheme]);
@@ -44,7 +44,10 @@ export function CodeBlock({ node, inline, className, children, ...props }: CodeB
   } else {
     return (
       <code
-        className={`${className} text-sm py-0.5 px-1 rounded-md text-[#E01F5B] bg-[#F6F6F6] border border-[#DADADA] dark:bg-[#232529] dark:text-[#E8912D] dark:border-[#3C3E42]`}
+        className={cn(
+          className,
+          'text-sm py-0.5 px-1 rounded-md text-[#E01F5B] bg-[#F6F6F6] border border-[#DADADA] dark:bg-[#232529] dark:text-[#E8912D] dark:border-[#3C3E42]',
+        )}
         {...props}>
         {children}
       </code>

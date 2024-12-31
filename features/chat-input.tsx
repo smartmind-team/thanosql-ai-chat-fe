@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useLayoutEffect, useRef } from 'react';
+import { memo, useCallback, useEffect, useLayoutEffect, useRef, ChangeEvent, Dispatch, SetStateAction } from 'react';
 import StickyCard from '@/components/sticky-card';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface ChatInputProps {
   input: string;
   isLoading: boolean;
-  setInput: React.Dispatch<React.SetStateAction<string>>;
+  setInput: Dispatch<SetStateAction<string>>;
   handleSubmit: (event?: { preventDefault?: () => void }) => void;
 }
 
@@ -41,8 +41,8 @@ function ChatInput({ input, isLoading, setInput, handleSubmit }: ChatInputProps)
     }
   }, []);
 
-  const handleInput = useCallback(
-    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleInputChange = useCallback(
+    (event: ChangeEvent<HTMLTextAreaElement>) => {
       setInput(event.target.value);
       adjustHeight();
     },
@@ -52,8 +52,8 @@ function ChatInput({ input, isLoading, setInput, handleSubmit }: ChatInputProps)
   const handleChat = useCallback(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
-      handleSubmit();
     }
+    handleSubmit();
   }, [handleSubmit]);
 
   useLayoutEffect(() => {
@@ -83,8 +83,8 @@ function ChatInput({ input, isLoading, setInput, handleSubmit }: ChatInputProps)
           value={input}
           rows={1}
           placeholder='Send a message...'
-          className='max-h-[calc(35dvh)] overflow-y-scroll resize-none !text-base border-0 shadow-none focus-visible:ring-0 p-0 mb-[0.857rem]'
-          onChange={handleInput}
+          className='max-h-[calc(35dvh)] overflow-y-scroll resize-none !text-base border-0 shadow-none focus-visible:ring-0 p-0 mb-[0.857rem] rounded-sm'
+          onChange={handleInputChange}
           autoFocus
           onKeyDown={event => {
             if (event.key === 'Enter' && !event.shiftKey) {

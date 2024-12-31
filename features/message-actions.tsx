@@ -3,17 +3,18 @@ import { ThumbsUp, ThumbsDown, Copy, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useOverlayStore } from '@/store/overlay';
-import { Message as TypeMessage } from 'ai/react';
+import { Message as IMessage } from 'ai/react';
 import { useCopyToClipboard } from 'usehooks-ts';
 import { motion } from 'framer-motion';
 
 interface MessageActionsProps {
   isLastIndex: boolean;
-  message: TypeMessage;
+  message: IMessage;
 }
 
 function MessageActions({ isLastIndex, message }: MessageActionsProps) {
   const [_, copyToClipboard] = useCopyToClipboard();
+  const toggleItemPanel = useOverlayStore().toggleItemPanel;
 
   const viewAnswerResources = isLastIndex ? (
     <Button
@@ -21,9 +22,7 @@ function MessageActions({ isLastIndex, message }: MessageActionsProps) {
       className='bg-grays-gray05 text-xs text-texts-tertiary'
       onClick={() => {
         console.log(message);
-        useOverlayStore.setState(state => ({
-          isOpenItemPanel: !state.isOpenItemPanel,
-        }));
+        toggleItemPanel();
       }}>
       답변 참고 자료 보기 <ChevronRight className='text-texts-primary' />
     </Button>

@@ -1,11 +1,11 @@
 import { memo, useMemo, useRef, useEffect } from 'react';
-import { Message } from 'ai/react';
-import PreviewMessages from '@/features/message';
+import { Message as IMessage } from 'ai/react';
+import Messages from '@/features/message';
 import { useChatStore } from '@/store/chat';
 import MessageLoader from '@/components/message-loader';
 
 interface ChatInterfaceProps {
-  messages: Message[];
+  messages: IMessage[];
   isLoading: boolean;
 }
 
@@ -19,12 +19,7 @@ function ChatInterface({ messages, isLoading }: ChatInterfaceProps) {
   const renderedMessages = useMemo(
     () =>
       messages.map((message, idx) => (
-        <PreviewMessages
-          key={message.id}
-          message={message}
-          isLoading={isLoading && messages.length - 1 === idx}
-          isLastIndex={messages.length - 1 === idx}
-        />
+        <Messages key={message.id} message={message} isLoading={isLoading && messages.length - 1 === idx} isLastIndex={messages.length - 1 === idx} />
       )),
     [messages, isLoading],
   );
