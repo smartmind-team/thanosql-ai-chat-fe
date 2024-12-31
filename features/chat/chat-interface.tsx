@@ -1,8 +1,8 @@
 import { memo, useMemo, useRef, useEffect } from 'react';
 import { Message as IMessage } from 'ai/react';
-import Messages from '@/features/message';
+import Messages from '@/features/chat/message';
 import { useChatStore } from '@/store/chat';
-import MessageLoader from '@/components/message-loader';
+import MessageLoader from '@/features/chat/message-loader';
 
 interface ChatInterfaceProps {
   messages: IMessage[];

@@ -1,9 +1,9 @@
-import ItemHeader from '@/components/item-header';
+import ContentHeader from '@/components/content-header';
 
-export default function ItemPanel() {
+export default function ContentPanel() {
   return (
     <div className='w-full h-full flex flex-col'>
-      <ItemHeader />
+      <ContentHeader />
       <div className='flex flex-1 justify-center items-center'>Item panel</div>
     </div>
   );

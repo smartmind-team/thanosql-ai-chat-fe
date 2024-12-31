@@ -1,10 +1,10 @@
 import { memo, useMemo } from 'react';
 import { cn } from '@/lib/utils';
 import type { Message as IMessage } from 'ai';
-import { Markdown } from '@/components/markdown';
+import { Markdown } from '@/features/markdown';
 import { SparklesIcon } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import MessageActions from '@/features/message-actions';
+import MessageActions from '@/features/chat/message-actions';
 
 interface MessagesProps {
   message: IMessage;

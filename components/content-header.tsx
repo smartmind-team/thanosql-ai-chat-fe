@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { useOverlayStore } from '@/store/overlay';
 import StickyCard from '@/components/sticky-card';
 
-export default function ItemHeader() {
+export default function ContentHeader() {
   const toggleItemPanel = useOverlayStore().toggleItemPanel;
 
   return (

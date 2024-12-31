@@ -5,7 +5,7 @@ import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import { CodeBlock } from '@/components/code-block';
+import { CodeBlock } from '@/features/code-block';
 import 'katex/dist/katex.min.css';
 
 interface MemoizedMarkdownProps {

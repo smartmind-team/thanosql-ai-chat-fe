@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 import { useOverlayStore } from '@/store/overlay';
 import ChatPanel from '@/components/chat-panel';
-import ItemPanel from '@/components/item-panel';
+import ContentPanel from '@/components/content-panel';
 
 function ResizableLayout() {
   const isOpenItemPanel = useOverlayStore(state => state.isOpenItemPanel);
@@ -17,7 +17,7 @@ function ResizableLayout() {
           <>
             <ResizableHandle id='resizable-handler' />
             <ResizablePanel id='item-panel' order={1} minSize={35} defaultSize={50}>
-              <ItemPanel />
+              <ContentPanel />
             </ResizablePanel>
           </>
         )}
