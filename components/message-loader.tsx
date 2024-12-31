@@ -2,7 +2,7 @@ import { useTextStreamer } from '@/hooks/use-text-streamer';
 import { motion } from 'framer-motion';
 import { SparklesIcon } from 'lucide-react';
 
-const LOADING_ITEMS = ['질문 확인 중입니다.', '데이터베이스 정보를 추출 중입니다.', '관련 문서에서 정보를 추출 중입니다.'];
+const LOADING_ITEMS = ['질문 확인 중입니다.', '자료 분석 중입니다.', '데이터베이스 정보를 추출 중입니다.', '관련 문서에서 정보를 추출 중입니다.'];
 
 export default function MessageLoader() {
   const currentText = useTextStreamer({ items: LOADING_ITEMS, delay: 1250, charInterval: 18 });
