@@ -4,16 +4,26 @@ import ThemeToggle from '@/features/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { useOverlayStore } from '@/store/overlay';
 import { cn } from '@/lib/utils';
+import { memo, useCallback } from 'react';
 
-export default function SideNav() {
+function SideNav() {
   const { isSideNavOpen, isFixedSideNav, setIsSideNavOpen } = useOverlayStore();
-  const handleMouseEnter = () => setIsSideNavOpen(true);
-  const handleMouseLeave = () => !isFixedSideNav && setIsSideNavOpen(false);
+
+  const handleMouseEnter = useCallback(() => {
+    if (!isSideNavOpen) {
+      setIsSideNavOpen(true);
+    }
+  }, [isSideNavOpen, setIsSideNavOpen]);
+
+  const handleMouseLeave = useCallback(() => {
+    if (isSideNavOpen && !isFixedSideNav) {
+      setIsSideNavOpen(false);
+    }
+  }, [isSideNavOpen, isFixedSideNav, setIsSideNavOpen]);
 
   return (
     <>
       {!isFixedSideNav && !isSideNavOpen && <div className='w-4 h-full bg-transparent absolute bottom-0 left-0' onMouseEnter={handleMouseEnter} />}
-
       <AnimatePresence>
         {isSideNavOpen && (
           <motion.div
@@ -33,18 +43,15 @@ export default function SideNav() {
   );
 }
 
-function NavHeader() {
-  return (
-    <div className='flex flex-col gap-[0.714rem]'>
-      <h1 className='text-[1.5rem] font-medium'>ThanoSQL</h1>
+const NavHeader = memo(() => (
+  <div className='flex flex-col gap-[0.714rem]'>
+    <h1 className='text-[1.5rem] font-medium'>ThanoSQL</h1>
+    <Button variant='outline' className='w-[10.071rem] border' onClick={() => console.log('새 대화 시작하기')}>
+      <Plus /> 새 대화 시작하기
+    </Button>
+  </div>
+));
 
-      <Button variant='outline' className='w-[10.071rem] border' onClick={() => console.log('새 대화 시작하기')}>
-        <Plus /> 새 대화 시작하기
-      </Button>
-    </div>
-  );
-}
+const NavFooter = memo(() => <ThemeToggle />);
 
-function NavFooter() {
-  return <ThemeToggle />;
-}
+export default memo(SideNav);

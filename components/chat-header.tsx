@@ -1,26 +1,38 @@
+import { memo } from 'react';
 import { Button } from '@/components/ui/button';
-import { Smartphone, MessagesSquare, AlignLeft, ChartBarStacked } from 'lucide-react';
+import { MessagesSquare, AlignLeft } from 'lucide-react';
 import { useOverlayStore } from '@/store/overlay';
 import StickyCard from './sticky-card';
+import { motion } from 'framer-motion';
 
-export default function ChatHeader() {
-  const { isOpenItemPanel, handleFixedSideNav } = useOverlayStore();
+interface ChatHeaderProps {
+  isMessageEmpty: boolean;
+  isLoading: boolean;
+}
+
+function ChatHeader({ isMessageEmpty, isLoading }: ChatHeaderProps) {
+  const {
+    // isOpenItemPanel,
+    handleFixedSideNav,
+  } = useOverlayStore();
 
   return (
-    <StickyCard id='custom-inner-gradient'>
+    <StickyCard className='absolute top-0' id='custom-inner-gradient'>
       <div className='flex gap-[0.286rem] items-center'>
         <Button variant='ghost' className='w-9 h-9 bg-background' onClick={handleFixedSideNav}>
           <AlignLeft size={16} />
         </Button>
-        <div className='flex items-center bg-background px-4 rounded-md'>
-          <div className='flex items-center justify-center w-9 h-9'>
-            <MessagesSquare size={16} />
-          </div>
-          Chat history title
-        </div>
+        {!isMessageEmpty && (
+          <motion.div className='flex items-center bg-background px-4 rounded-md' initial={{ x: 5, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+            <div className='flex items-center justify-center w-9 h-9'>
+              <MessagesSquare size={16} />
+            </div>
+            Chat history title
+          </motion.div>
+        )}
       </div>
       <div className='flex gap-[0.571rem]'>
-        {!isOpenItemPanel && (
+        {/* {!isOpenItemPanel && (
           <Button
             variant='ghost'
             className='w-9 h-9 bg-background'
@@ -29,10 +41,11 @@ export default function ChatHeader() {
                 isOpenItemPanel: !state.isOpenItemPanel,
               }))
             }>
-            <ChartBarStacked size={16} />
           </Button>
-        )}
+        )} */}
       </div>
     </StickyCard>
   );
 }
+
+export default memo(ChatHeader, (prevProps, nextProps) => prevProps.isMessageEmpty === nextProps.isMessageEmpty);
