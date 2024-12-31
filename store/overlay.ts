@@ -5,7 +5,7 @@ interface OverlayStore {
   isOpenItemPanel: boolean;
   isFixedSideNav: boolean;
   setIsSideNavOpen: (isSideNavOpen: boolean) => void;
-  toggleItemPanel: () => void;
+  toggleContentPanel: () => void;
   toggleFixedSideNav: () => void;
 }
 
@@ -14,7 +14,7 @@ export const useOverlayStore = create<OverlayStore>((set, get) => ({
   isOpenItemPanel: false,
   isFixedSideNav: false,
   setIsSideNavOpen: isSideNavOpen => set({ isSideNavOpen }),
-  toggleItemPanel: () => set(state => ({ isOpenItemPanel: !state.isOpenItemPanel })),
+  toggleContentPanel: () => set(state => ({ isOpenItemPanel: !state.isOpenItemPanel })),
   toggleFixedSideNav: () => {
     set(state => {
       const newFixed = !state.isFixedSideNav;

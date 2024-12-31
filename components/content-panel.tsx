@@ -1,4 +1,4 @@
-import ContentHeader from '@/components/content-header';
+import ContentHeader from '@/features/content/content-header';
 
 export default function ContentPanel() {
   return (

@@ -14,7 +14,7 @@ interface MessageActionsProps {
 
 function MessageActions({ isLastIndex, message }: MessageActionsProps) {
   const [_, copyToClipboard] = useCopyToClipboard();
-  const toggleItemPanel = useOverlayStore().toggleItemPanel;
+  const toggleContentPanel = useOverlayStore().toggleContentPanel;
 
   const viewAnswerResources = isLastIndex ? (
     <Button
@@ -22,7 +22,7 @@ function MessageActions({ isLastIndex, message }: MessageActionsProps) {
       className='bg-grays-gray05 text-xs text-texts-tertiary'
       onClick={() => {
         console.log(message);
-        toggleItemPanel();
+        toggleContentPanel();
       }}>
       답변 참고 자료 보기 <ChevronRight className='text-texts-primary' />
     </Button>

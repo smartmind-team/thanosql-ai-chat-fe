@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { Button } from '@/components/ui/button';
 import { MessagesSquare, AlignLeft } from 'lucide-react';
 import { useOverlayStore } from '@/store/overlay';
-import StickyCard from './sticky-card';
+import StickyCard from '../../components/sticky-card';
 import { motion } from 'framer-motion';
 
 interface ChatHeaderProps {

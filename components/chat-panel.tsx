@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import Welcome from '@/features/chat/welcome';
-import ChatHeader from '@/components/chat-header';
+import ChatHeader from '@/features/chat/chat-header';
 import ChatInterface from '@/features/chat/chat-interface';
 import ChatInput from '@/features/chat/chat-input';
 import { useChat } from 'ai/react';
