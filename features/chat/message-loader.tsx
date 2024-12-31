@@ -4,6 +4,17 @@ import { SparklesIcon } from 'lucide-react';
 
 const LOADING_ITEMS = ['질문 확인 중입니다.', '자료 분석 중입니다.', '데이터베이스 정보를 추출 중입니다.', '관련 문서에서 정보를 추출 중입니다.'];
 
+const shimmerVariants = {
+  shimmer: {
+    opacity: [0.35, 1, 0.35],
+    transition: {
+      duration: 1.25,
+      ease: 'easeInOut',
+      repeat: Infinity,
+    },
+  },
+};
+
 export default function MessageLoader() {
   const currentText = useTextStreamer({ items: LOADING_ITEMS, delay: 1250, charInterval: 18 });
 
@@ -18,7 +29,9 @@ export default function MessageLoader() {
           <SparklesIcon size={14} />
         </div>
         <div className='flex flex-col gap-2 w-full pt-[0.4rem]'>
-          <motion.div className='flex flex-col gap-4 text-muted-foreground'>{currentText}</motion.div>
+          <motion.div className='flex flex-col gap-4 text-muted-foreground' variants={shimmerVariants} animate='shimmer'>
+            {currentText}
+          </motion.div>
         </div>
       </div>
     </motion.div>
