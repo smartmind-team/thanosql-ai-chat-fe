@@ -3,7 +3,10 @@ import Link from 'next/link';
 import React, { memo } from 'react';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { CodeBlock } from '@/components/code-block';
+import 'katex/dist/katex.min.css';
 
 interface MemoizedMarkdownProps {
   children: string;
@@ -87,7 +90,7 @@ const MemoizedMarkdown = ({ children }: MemoizedMarkdownProps) => {
 
   const renderedMarkdown = useMemo(
     () => (
-      <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+      <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[[rehypeKatex, { strict: 'ignore' }]]} components={components}>
         {children}
       </ReactMarkdown>
     ),
