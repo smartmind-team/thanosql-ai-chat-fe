@@ -2,16 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+body {
+  font-family: var(--font-spoqa-han-sans), sans-serif;
   font-size: 14px;
 }
 
-body {
-  font-family: var(--font-spoqa-han-sans), sans-serif;
+body #custom-gradient {
+  background: linear-gradient(to top, var(--gradient-bg-from) 80%, var(--gradient-bg-to));
+}
+
+body #custom-inner-gradient {
+  background: linear-gradient(180deg, var(--inner-gradient-bg-from) 0%, var(--inner-gradient-bg-center) 70%, var(--inner-gradient-bg-to) 100%);
 }
 
 @layer base {
   :root {
+    --gradient-bg-from: #ffffff;
+    --gradient-bg-to: #ffffff01;
+    --inner-gradient-bg-from: #ffffff;
+    --inner-gradient-bg-center: #ffffffb2;
+    --inner-gradient-bg-to: #ffffff00;
     --background: 0 0% 100% / 1;
     --side-background: 0 0% 98% / 1;
     --opacity-background: 0 0% 100% / 1;
@@ -45,8 +55,28 @@ body {
     --brands-normal: 269 56% 64% / 1;
     --brands-light: 250 57% 79% / 1;
     --brands-thin: 268 57% 95% / 1;
+
+    --texts-primary: 220 13% 18% / 1;
+    --texts-secondary: 222 11% 34% / 1;
+    --texts-tertiary: 222 8% 51% / 1;
+    --texts-quenternary: 216 3% 74% / 1;
+    --texts-brand: 269 63% 80% / 1;
+
+    --grays-gray: 225 7% 44% / 1;
+    --grays-gray-01: 229 7% 62% / 1;
+    --grays-gray-02: 230 3% 73% / 1;
+    --grays-gray-03: 225 2% 84% / 1;
+    --grays-gray-04: 220 1% 90% / 1;
+    --grays-gray-05: 240 0% 96% / 1;
+    --grays-gray-light: 0 0% 100% / 1;
+    --grays-gray-dark: 0 0% 0% / 1;
   }
   .dark {
+    --gradient-bg-from: #262627;
+    --gradient-bg-to: #26262700;
+    --inner-gradient-bg-from: #262627;
+    --inner-gradient-bg-center: #262627b2;
+    --inner-gradient-bg-to: #26262700;
     --background: 240 1% 15% / 1;
     --side-background: 240 5% 7% / 1;
     --opacity-background: 0 0% 0% / 1;
@@ -79,6 +109,21 @@ body {
     --brands-normal: 269 67% 72% / 1;
     --brands-light: 270 46% 30% / 1;
     --brands-thin: 270 52% 20% / 1;
+
+    --texts-primary: 0 0% 100% / 1;
+    --texts-secondary: 216 3% 74% / 1;
+    --texts-tertiary: 228 3% 62% / 1;
+    --texts-quenternary: 231 7% 40% / 1;
+    --texts-brand: 269 70% 86% / 1;
+
+    --grays-gray: 240 0% 96% / 1;
+    --grays-gray-01: 225 2% 84% / 1;
+    --grays-gray-02: 229 7% 62% / 1;
+    --grays-gray-03: 229 7% 62% / 1;
+    --grays-gray-04: 228 8% 24% / 1;
+    --grays-gray-05: 228 6% 21% / 1;
+    --grays-gray-light: 240 3% 15% / 1;
+    --grays-gray-dark: 0 0% 100% /1;
   }
 }
 

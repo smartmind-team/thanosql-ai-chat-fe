@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import { ThemeProvider } from '@/lib/theme-provider';
 import { cn } from '@/lib/utils';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 const spoqaHanSansNeo = localFont({
   src: [
@@ -49,7 +50,7 @@ export default function RootLayout({
     <html lang='en' suppressHydrationWarning={true}>
       <body className={cn(spoqaHanSansNeo.variable, 'antialiased w-screen h-screen flex overflow-hidden')}>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
-          {children}
+          <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
     </html>
